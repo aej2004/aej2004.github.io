@@ -130,7 +130,7 @@ nav ul li a.active {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
     margin: 20px;
 }
 
