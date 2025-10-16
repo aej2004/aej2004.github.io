@@ -28,54 +28,45 @@ faqs.forEach(faq => {
   });
 });
 
-const API_URL = "http://localhost:3000/snacks";
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("snack-form");
+  const snackList = document.getElementById("snack-list");
 
-// Fetch and display snacks
-async function fetchSnacks() {
-  try {
-    const res = await fetch(API_URL);
-    const snacks = await res.json();
-
-    const list = document.getElementById("snack-list");
-    list.innerHTML = ""; // Clear the list first
-
+  // Load snacks on page load
+  async function loadSnacks() {
+    const response = await fetch("http://localhost:3000/snacks");
+    const snacks = await response.json();
+    snackList.innerHTML = "";
     snacks.forEach(snack => {
       const li = document.createElement("li");
-      li.textContent = `${snack.name} (${snack.park}) – ${snack.type || "Snack"} ⭐ ${snack.rating}`;
-      list.appendChild(li);
+      li.textContent = `${snack.name} — ${snack.park} (${snack.type}) ⭐ ${snack.rating}`;
+      snackList.appendChild(li);
     });
-  } catch (err) {
-    console.error("Error fetching snacks:", err);
   }
-}
 
-// Handle form submission
-async function addSnack(event) {
-  event.preventDefault();
+  // Handle new snack submissions
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-  const newSnack = {
-    name: document.getElementById("snack-name").value,
-    park: document.getElementById("snack-park").value,
-    type: document.getElementById("snack-type").value,
-    rating: Number(document.getElementById("snack-rating").value) || 0
-  };
+    const newSnack = {
+      name: document.getElementById("snack-name").value,
+      park: document.getElementById("snack-park").value,
+      type: document.getElementById("snack-type").value || "Unknown",
+      rating: parseInt(document.getElementById("snack-rating").value) || 0
+    };
 
-  try {
-    await fetch(API_URL, {
+    await fetch("http://localhost:3000/snacks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newSnack)
     });
 
-    event.target.reset(); // Clear form
-    fetchSnacks(); // Refresh list
-  } catch (err) {
-    console.error("Error adding snack:", err);
-  }
-}
+    // Clear form fields
+    form.reset();
 
-// Run when page loads
-document.addEventListener("DOMContentLoaded", () => {
-  fetchSnacks(); // Load existing snacks
-  document.getElementById("snack-form").addEventListener("submit", addSnack);
+    // Reload snack list
+    loadSnacks();
+  });
+
+  loadSnacks();
 });
