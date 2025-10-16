@@ -34,8 +34,8 @@ p {
 }
 
 img {
-    width: 700px;
-    height: auto;
+    max-width: 700px;
+    max-height: 700px;
     display: block;
     margin: 10px auto;
 }
@@ -177,4 +177,54 @@ nav ul li a.active {
 
 .more-button:hover, .less-button:hover {
     background: pink;
+}
+
+/* Snack Styles */
+
+/* Snack Section */
+.snack-section {
+    margin-top: 40px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+  
+/* Snack Grid Layout */
+#snack-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 20px;
+    padding: 20px;
+
+    list-style: none;
+}
+  
+/* Snack Form Styles */
+.snack-form {
+    margin-top: 20px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+  
+.snack-form input {
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid #ffd6e0;
+}
+  
+.snack-form button {
+    background-color: #ffb6c1;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+  
+.snack-form button:hover {
+    background-color: #ff8fa3;
 }

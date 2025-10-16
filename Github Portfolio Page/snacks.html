@@ -1,0 +1,56 @@
+<DOCTYPE! html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Disney World Magic</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <main>
+    <header>
+      <h1>Disney World Magic</h1>
+    </header>
+   
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="park.html">Parks</a></li>
+        <li><a href="snacks.html">Snacks</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <body>
+        <div class = "intro">
+            <img src="images/mickeybar.jpg" alt="Disney Mickey Ice Cream Bar">
+            <blockquote class = "quote">
+            "Everything Tastes Better When It's Mickey Shaped"
+            </blockquote>
+        </div>
+        
+        <h2>Snacks!</h2>
+        <p>
+            Disney Parks are filled with all different kinds of delicious treats for you to eat while 
+            your walking around the park. Here are some of the most popular snacks you can find at 
+            Disney World that others have recommended!
+        </p>
+
+        <section class="snack-suggestions">
+            <h3>Snack Suggestions:</h3>
+
+            <!-- Snack List -->
+            <ul id="snack-list"></ul>
+
+            <!-- Form to Add a Snack -->
+            <h3>Add Your Own Snack:</h3>
+            <form id="snack-form" class="snack-form">
+                <input type="text" id="snack-name" placeholder="Snack name" required>
+                <input type="text" id="snack-park" placeholder="Park (e.g., Magic Kingdom)" required>
+                <input type="text" id="snack-type" placeholder="Type (sweet, savory, etc.)">
+                <input type="number" id="snack-rating" placeholder="Rating (1-5)" min="1" max="5">
+                <button type="submit">Add Snack</button>
+            </form>
+        </section>
+    </body>
+  </main>
+</html>
